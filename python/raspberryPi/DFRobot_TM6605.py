@@ -16,7 +16,7 @@ class DFRobot_TM6605:
     TM6605_REG_CONTROL      = 0x0C
     TM6605_REG_EFFECT       = 0x04
     TM6605_IIC_ADDRESS      = 0x2D
-    class effect(Enum):
+    class Effect(Enum):
         sharp_click = 1
         instant_click = 4
         light_tap = 7
@@ -104,9 +104,26 @@ class DFRobot_TM6605:
         '''
         self._write_reg(self.TM6605_REG_CONTROL,0x00)
 
-    def selectEffect(self,effect):
+    def select_effect(self,effect):
         '''
-        @fn selectEffect
-        @brief Select vibration effect
+        @fn select_effect
+        @brief Select vibration effect, ensuring the parameter is an Effect enum member or valid integer value
+        @param effect - Must be an Effect enum member or its corresponding valid integer value
+        @raise ValueError - Raised when an invalid value is provided
+        @raise TypeError - Raised when an incorrect type is provided
         '''
-        self._write_reg(self.TM6605_REG_EFFECT,effect)
+        # Handle enum types
+        if isinstance(effect, self.Effect):
+            effect_value = effect.value
+        # Handle integer values
+        elif isinstance(effect, int):
+            valid_values = [e.value for e in self.Effect]
+            if effect not in valid_values:
+                raise ValueError("Invalid effect value: {}, valid range: {}".format(effect, valid_values))
+            effect_value = effect
+        # Handle invalid types
+        else:
+            raise TypeError("Parameter must be an Effect enum member or integer")
+
+        # Write to register
+        self._write_reg(self.TM6605_REG_EFFECT, effect_value)

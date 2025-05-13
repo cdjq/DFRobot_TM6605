@@ -6,7 +6,7 @@ TM6605 是一款专为解决在驱动线性振动马达(LRA)触觉反馈元件�
 
 TM6605 通过采用自动谐振跟踪解决了这个问题，它会自动检测并跟踪最佳的换向频率。这意味着TM6605 会自动产生正确的谐振输出频率。作为一个额外的好处就是TM6605 能够执行优化的制动算法，以此阻止LRA振铃，留给用户一个清晰的触觉反馈感觉。TM6605 还有电源校正功能来确保无电源调节时的恒定振动强度，从而允许与一个高效直流电池连接。本产品性能优良，质量可靠。
 
-![Product Image](../../resources/images/SEN0626svg.png)
+![Product Image](../../resources/images/DRI0056.png)
 
 
 ## 产品链接（https://www.dfrobot.com.cn/)
@@ -51,10 +51,13 @@ DRI0056 Gravity: TM6605振动电机
         @brief 停止效果播放
         '''
 
-    def selectEffect(self,effect)
+    def select_effect(self,effect)
         '''
-        @fn selectEffect
-        @brief 选择振动效果
+        @fn select_effect
+        @brief Select vibration effect，确保参数是 Effect 枚举成员或有效整数值
+        @param effect - 必须是 Effect 枚举成员或对应的有效整数值
+        @raise ValueError - 当值无效时抛出
+        @raise TypeError - 当类型错误时抛出
         '''
 ```
 

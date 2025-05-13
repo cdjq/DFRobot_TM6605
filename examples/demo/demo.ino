@@ -34,27 +34,26 @@ void setup() {
 		Serial.print("failed,Not found TM6605!");
 	}
 	Serial.println("successed");
-	TM6605.play();
 }
   
 void loop() {
-  // Traverse all effects
-  for (auto effect  : effects) {
-    Serial.print("Playing: ");
-    Serial.print(getEffectName(effect));
-    Serial.print(" (ID:");
-    Serial.print(effect);
-    Serial.println(")");
-    if(effect==TM6605.eSleepCommand)
+	// Traverse all effects
+	TM6605.play();
+	for (auto effect  : effects) {
+		Serial.print("Playing: ");
+		Serial.print(getEffectName(effect));
+		Serial.print(" (ID:");
+		Serial.print(effect);
+		Serial.println(")");
+		if(effect==TM6605.eSleepCommand)
 			continue;
-    TM6605.selectEffect(effect);
-    TM6605.play();
-    delay(2000); // Each effect is displayed for 2 seconds.
-    if(effect==TM6605.eLongAlert)
+		TM6605.selectEffect(effect);
+		delay(2000); // Each effect is displayed for 2 seconds.
+		if(effect == TM6605.eLongAlert)
 			delay(8000);
-    TM6605.stop(); // Stop the current effect.
-    delay(500);   // The effect interval is 500ms.
-  }
+	}
+	TM6605.stop(); // Stop the current effect.
+	delay(2000);   // The effect interval is 2000ms.
 }
 
 

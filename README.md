@@ -8,7 +8,7 @@ The TM6605 solves this issue by using automatic resonance tracking, automaticall
 
    
    
-![正反面svg效果图](../resources/images/SFA40.png)
+![正反面svg效果图](../resources/images/DRI0056.png)
 
 ## Product Link（https://www.dfrobot.com/)
 

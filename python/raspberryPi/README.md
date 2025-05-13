@@ -6,7 +6,7 @@ TM6605 is a haptic feedback driver specifically designed to address common obsta
 
 The TM6605 solves this issue by using automatic resonance tracking, automatically detecting and tracking the optimal commutation frequency. This means that the TM6605 will automatically generate the correct resonant output frequency. As an additional benefit, the TM6605 can execute an optimized braking algorithm to prevent LRA ringing, leaving users with a clear tactile feedback sensation. The TM6605 also features power correction functionality to ensure constant vibration intensity without power regulation, allowing connection to an efficient DC battery. This product performs well and is highly reliable.
 
-![Product Image](../../resources/images/SEN0626svg.png)
+![Product Image](../../resources/images/DRI0056.png)
 
 ## Product Link（https://www.dfrobot.com/)
 
@@ -52,10 +52,13 @@ This library depends on the SMBUS library, please ensure that SMBUS has been ins
         @brief Stop effect playback
         '''
 
-    def selectEffect(self,effect)
+    def select_effect(self,effect)
         '''
-        @fn selectEffect
-        @brief Select vibration effect
+        @fn select_effect
+        @brief Select vibration effect, ensuring the parameter is an Effect enum member or valid integer value
+        @param effect - Must be an Effect enum member or its corresponding valid integer value
+        @raise ValueError - Raised when an invalid value is provided
+        @raise TypeError - Raised when an incorrect type is provided
         '''
 
 ```
